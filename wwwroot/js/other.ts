@@ -3,7 +3,7 @@ function func() {
   console.log('loaded!');
   console.log(document.getElementById("yerName").innerText);
   var name = $("#yerName");
-  name.text("America!");
+  name.text("Jquery!");
   console.log(name.text());
 
 }

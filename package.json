@@ -17,7 +17,9 @@
     "webpack-notifier": "^1.7.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
     "@types/jquery": "^3.3.29",
-    "@types/node": "^11.13.6"
+    "@types/node": "^11.13.6",
+    "whatwg-fetch": "^3.0.0"
   }
 }

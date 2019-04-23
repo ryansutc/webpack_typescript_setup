@@ -1,3 +1,4 @@
+
 var path = require('path');
 var WebpackNotifierPlugin = require('webpack-notifier');
 
@@ -5,9 +6,11 @@ console.log(path.resolve(__dirname, './wwwroot/js/'));
 module.exports = {
   mode: 'development',
   target: 'node',
-  entry: {
-    main: './wwwroot/js/main.ts'
-  },
+  entry: [
+    '@babel/polyfill',
+    'whatwg-fetch',
+    './wwwroot/js/main.ts'
+  ],
   module: {
     rules: [
       {
