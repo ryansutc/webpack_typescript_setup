@@ -67,3 +67,6 @@ obj/
 #specifically ignore generated .js files:
 /wwwroot/**/*.js
 /wwwroot/**/*.js.map
+
+#specifically ignore generated dist folder:
+/wwwroot/dist/**/*

@@ -41,7 +41,7 @@ Client side changes don't even require you to refresh the Visual Studio debugger
 ## Why it doesn't suck:
 - The project includes [webpack-notifier](https://www.npmjs.com/package/webpack-notifier) which causes a notification message to appear in your windows tray if something goes sideways so you don't need to watch the terminal window.
 - The ASP .NET Core app includes the Microsoft.AspNetCore.StaticFiles middleware Nuget package and is set up to server a static index.html file so you can use serverside logic and go full stack development... or not.
-- You can run this in Visual Studio or VS Code. In Visual Studio the site will be launched using IIS. In VS Code you are using the .NET Core launcher(?)
+- You can run this in Visual Studio or VS Code. In Visual Studio the site will be launched using IIS. In VS Code you are using the built in [Omnisharp](https://www.omnisharp.net/) server
 
 
 ## Additional Notes:

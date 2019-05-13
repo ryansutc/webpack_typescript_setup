@@ -2,8 +2,10 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 
 <body>
@@ -14,7 +16,8 @@
     asp-fallback-src="~/lib/jquery/dist/jquery.min.js" asp-fallback-test="window.jQuery" crossorigin="anonymous"
     integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
     </script>
-  <script src="/js/main.build.js"></script>
+  <%= require('html-loader!./partial.html') %>
 </body>
+
 
 </html>

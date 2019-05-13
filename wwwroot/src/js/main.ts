@@ -14,3 +14,5 @@ myfetchIds(url).then(function (ids: string[]) {
   .catch(function (err: any) {
     $("#fetchResult").text("Error." + err);
   });
+
+  //g
