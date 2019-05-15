@@ -1,7 +1,7 @@
 ﻿//main.js
 
 // Test ability to load module with jquery objects:
-var other = require('./other');
+var other = require('./other'); // CommonJS/RequireJS/node import
 other();
 
 //test ability to use fetch & promises in IE11:
@@ -15,4 +15,7 @@ myfetchIds(url).then(function (ids: string[]) {
     $("#fetchResult").text("Error." + err);
   });
 
-  //g
+// Tree shaking test: 
+// lets import one function from math only:
+import { cube } from "./math"; // ES6 ES2015 import
+console.log(cube(5));

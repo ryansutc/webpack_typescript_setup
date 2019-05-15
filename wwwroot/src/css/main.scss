@@ -1,8 +1,7 @@
-$blue: #0079c1;
-$gray: #efefef;
-$white: #fff;
+// load any 3rd part CSS files from node_modules here:
 
-h2 { 
-  color: $blue;
-  font-style: normal;
-}
+
+// After all 3rd party node modules are loaded, bring in our site styles:
+@import "index";
+
+

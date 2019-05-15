@@ -2,6 +2,7 @@
   "name": "webpack_test",
   "version": "1.0.0",
   "description": "",
+  "sideEffects": false,
   "main": "main.js",
   "scripts": {
     "test": "echo __dirname & '/wwwroot/js/'",
@@ -10,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^2.0.2",
     "css-loader": "^2.1.1",
     "html-loader": "^0.5.5",

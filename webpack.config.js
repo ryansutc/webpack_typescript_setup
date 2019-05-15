@@ -7,42 +7,53 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+//const MinifyPlugin = require('babel-minify-webpack-plugin');
 
 var srcFolder = "./wwwroot/src";
 var distFolder = "./wwwroot/dist";
+
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   target: 'node',
   entry: [
-    srcFolder + "/css/main.scss", 
+    srcFolder + "/css/main.scss",
     '@babel/polyfill',
     'whatwg-fetch',
     srcFolder + '/js/main.ts'
-    ], 
-    module: {
+  ],
+  module: {
     rules: [
-  {
-    
-      test: /\.tsx?$/,
+      {
+
+        test: /\.tsx?$/,
         loader: 'ts-loader',
-          options: {
+        options: {
           transpileOnly: true
         }
-},
-{
-  
-  test: /\.html$/,
+      },
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+      {
+
+        test: /\.html$/,
         use: [
           {
-          loader: "html-loader",
-          options: { minimize: false }
-        }
-      ],
-      exclude: /node_modules/
+            loader: "html-loader",
+            options: { minimize: false }
+          }
+        ],
+        exclude: /node_modules/
       },
-        {
-      test: /\.scss$/,
-      use: [
+      {
+        test: /\.scss$/,
+        use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
           {
@@ -54,12 +65,12 @@ module.exports = {
       }
     ]
   },
-resolve: {
-  extensions: ['.tsx', '.ts', '.js']
-  }, 
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  },
   output: {
     path: path.resolve(__dirname, distFolder),
-filename: '[name]_[chunkhash].js',
+    filename: '[name]_[chunkhash].js',
     publicPath: ""
   },
   optimization: {
@@ -93,7 +104,7 @@ filename: '[name]_[chunkhash].js',
   plugins: [
     new HtmlWebPackPlugin({
       title: "Webpack Typescript Setup Template",
-      template: srcFolder + "/index.html",
+      template: srcFolder + "/index.ejs",
       favicon: srcFolder + "/assets/favicon.ico",
       filename: "./index.html"
     }),
@@ -111,5 +122,6 @@ filename: '[name]_[chunkhash].js',
       path.resolve(__dirname, "node_modules/")
     ],
     extensions: [".ts", ".tsx", ".js", ".scss", ".css"]
-  }
+  },
+  devtool: "inline-source-map"
 };
