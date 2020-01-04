@@ -7,14 +7,16 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-//const MinifyPlugin = require('babel-minify-webpack-plugin');
+
+const CompressionPlugin = require('compression-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var srcFolder = "./wwwroot/src";
 var distFolder = "./wwwroot/dist";
 
 module.exports = {
-  mode: 'production',
-  target: 'node',
+  mode: 'development',
+  target: 'web',
   entry: [
     srcFolder + "/css/main.scss",
     '@babel/polyfill',
@@ -58,7 +60,7 @@ module.exports = {
           "css-loader",
           {
             loader: "resolve-url-loader",
-            options: { includeRoot: true }
+            //options: { includeRoot: true }
           },
           "sass-loader?sourceMap"
         ]
@@ -81,9 +83,9 @@ module.exports = {
         sourceMap: false
       })
     ],
-    /*
+
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
       maxInitialRequests: Infinity,
       minSize: 30,
       cacheGroups: {
@@ -98,9 +100,9 @@ module.exports = {
         }
       }
     },
-    */
+
   },
-  devtool: "inline-source-map",
+  devtool: "source-map",
   plugins: [
     new HtmlWebPackPlugin({
       title: "Webpack Typescript Setup Template",
@@ -114,7 +116,17 @@ module.exports = {
       filename: "[name].[chunkhash].css",
       chunkFilename: "[id].css"
     }),
-    //new WebpackNotifierPlugin()
+    new WebpackNotifierPlugin(),
+    new CompressionPlugin({
+      algorithm: 'gzip'
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: "assets/**/*",
+        context: srcFolder + "/"
+        //cache: true
+      }
+    ])
   ],
   resolve: {
     modules: [
@@ -123,5 +135,5 @@ module.exports = {
     ],
     extensions: [".ts", ".tsx", ".js", ".scss", ".css"]
   },
-  devtool: "inline-source-map"
+  //devtool: "inline-source-map"
 };

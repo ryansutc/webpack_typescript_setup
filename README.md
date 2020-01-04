@@ -47,3 +47,10 @@ Client side changes don't even require you to refresh the Visual Studio debugger
 ## Additional Notes:
 - [todo]:  Add steps to configure production & dev builds
 = [todo]: figure out how to use [@babel/preset-env](https://babeljs.io/docs/en/next/babel-preset-env.html) so we can just specify which browsers we want to support and let babel automatically shim anything not natively supported.
+
+## Publish
+- dotnet publish --output [outputfolder] --configuration Release
+
+## Readings:
+- Publishing and Running ASP .NET Core Apps [https://weblog.west-wind.com/posts/2016/Jun/06/Publishing-and-Running-ASPNET-Core-Applications-with-IIS]
+- 
